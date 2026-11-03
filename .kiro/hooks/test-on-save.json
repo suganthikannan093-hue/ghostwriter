@@ -1,0 +1,13 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Run tests on lib save",
+      "description": "Run the Vitest suite whenever a lib or test file is saved.",
+      "trigger": "PostFileSave",
+      "matcher": "^(lib|tests)/.*\\.ts$",
+      "action": { "type": "command", "command": "npx vitest run --reporter=dot" },
+      "timeout": 120
+    }
+  ]
+}

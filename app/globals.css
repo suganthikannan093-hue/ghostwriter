@@ -1,0 +1,37 @@
+:root { --bg:#0b0a10; --panel:#15131d; --line:#2a2638; --text:#e9e4f5; --muted:#9a93ad; --accent:#ff7a1a; --ecto:#7dffb0; --danger:#ff5a6e; }
+* { box-sizing:border-box; }
+body { margin:0; background: radial-gradient(1200px 600px at 70% -10%, #2a1640 0%, transparent 60%), radial-gradient(800px 400px at 0% 100%, #102a1d 0%, transparent 60%), var(--bg); color:var(--text); font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; min-height:100vh; }
+.wrap { max-width:1180px; margin:0 auto; padding:28px 20px 60px; }
+header.top { display:flex; align-items:center; gap:14px; margin-bottom:22px; }
+.logo { font-size:34px; animation: float 4s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-6px); } }
+h1 { margin:0; font-size:26px; letter-spacing:.3px; } h1 span { color:var(--accent); }
+.sub { color:var(--muted); margin:2px 0 0; }
+.badge { margin-left:auto; font-size:12px; padding:4px 10px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
+.badge.demo { border-color:#7a5a1a; color:#ffc46b; background:#2a1d08; } .badge.live { border-color:#1d6b43; color:var(--ecto); background:#0b2417; }
+.grid { display:grid; grid-template-columns: 380px 1fr; gap:18px; } @media (max-width:900px){ .grid{ grid-template-columns:1fr; } }
+.panel { background:color-mix(in srgb, var(--panel) 92%, transparent); border:1px solid var(--line); border-radius:14px; padding:16px; }
+label { display:block; font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:10px 0 6px; }
+textarea { width:100%; min-height:260px; resize:vertical; background:#0e0c14; color:var(--text); border:1px solid var(--line); border-radius:10px; padding:12px; font: 13px/1.5 ui-monospace, Menlo, monospace; }
+textarea:focus, select:focus, button:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
+select { width:100%; background:#0e0c14; color:var(--text); border:1px solid var(--line); border-radius:8px; padding:8px; }
+.seg { display:flex; gap:6px; } .seg button { flex:1; }
+button { cursor:pointer; border-radius:9px; border:1px solid var(--line); background:#1d1a28; color:var(--text); padding:9px 12px; font-weight:600; }
+button.on { border-color:var(--accent); color:var(--accent); }
+button.primary { width:100%; margin-top:14px; background:linear-gradient(180deg,#ff8a2e,#e0620a); border:0; color:#1a0d00; font-size:16px; padding:12px; box-shadow:0 0 24px #ff7a1a40; }
+button.primary:disabled { opacity:.6; cursor:wait; }
+.row { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; } .row button { font-size:12px; padding:6px 9px; font-weight:500; }
+.muted { color:var(--muted); font-size:13px; } .err { color:var(--danger); margin-top:10px; }
+.tomb { border:1px dashed var(--line); border-radius:12px; padding:14px; margin-bottom:14px; background:#110f18; }
+.tomb h2 { margin:0 0 4px; font-size:22px; } .tomb .epi { color:#c9b8ff; font-style:italic; }
+.tabs { display:flex; gap:4px; border-bottom:1px solid var(--line); margin-bottom:12px; flex-wrap:wrap; }
+.tabs button { border:0; border-bottom:2px solid transparent; border-radius:0; background:none; color:var(--muted); }
+.tabs button.on { color:var(--text); border-bottom-color:var(--accent); }
+pre.doc { white-space:pre-wrap; background:#0e0c14; border:1px solid var(--line); border-radius:10px; padding:14px; margin:0; font: 13px/1.55 ui-monospace, Menlo, monospace; max-height:62vh; overflow:auto; }
+.code { display:grid; grid-template-columns:240px 1fr; gap:10px; } @media (max-width:700px){ .code{ grid-template-columns:1fr; } }
+.tree { background:#0e0c14; border:1px solid var(--line); border-radius:10px; padding:8px; max-height:62vh; overflow:auto; font: 12.5px ui-monospace, monospace; }
+.tree button { display:block; width:100%; text-align:left; background:none; border:0; padding:4px 6px; font-weight:400; color:var(--muted); }
+.tree button.on { color:var(--ecto); background:#17241c; } .tree .k { color:#ffb26b; }
+.empty { text-align:center; padding:70px 20px; color:var(--muted); } .empty .big { font-size:54px; }
+.spin { display:inline-block; animation: float 1.2s ease-in-out infinite; }
+footer { margin-top:26px; color:var(--muted); font-size:12px; text-align:center; }

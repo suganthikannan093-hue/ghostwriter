@@ -1,0 +1,12 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Schema triple-check",
+      "description": "Remind the agent that SpecSchema, specJsonSchema and demoSpec must change together.",
+      "trigger": "PostFileSave",
+      "matcher": "^lib/(schema|demo)\\.ts$",
+      "action": { "type": "agent", "prompt": "Verify lib/schema.ts SpecSchema, specJsonSchema and lib/demo.ts demoSpec still describe the same shape; fix any drift and rerun tests." }
+    }
+  ]
+}

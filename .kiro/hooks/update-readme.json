@@ -1,0 +1,12 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Keep README and spec in sync",
+      "description": "When the schema or API route changes, ask the agent to update README and tasks.md.",
+      "trigger": "PostFileSave",
+      "matcher": "^(lib/schema\\.ts|app/api/.*)$",
+      "action": { "type": "agent", "prompt": "lib/schema.ts or an API route changed. Update README.md (API + architecture sections) and tick/add tasks in .kiro/specs/ghostwriter/tasks.md so docs match the code. Keep edits minimal." }
+    }
+  ]
+}

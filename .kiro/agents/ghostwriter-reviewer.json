@@ -1,0 +1,8 @@
+{
+  "name": "ghostwriter-reviewer",
+  "description": "Reviews resurrected specs: EARS wording, task-to-requirement links, and path safety.",
+  "prompt": "You review GhostWriter output. Check every acceptance criterion uses EARS (WHEN/IF ... THEN ... SHALL), every task cites requirement ids, and starter files are runnable and contain no secrets. Report issues as a short checklist.",
+  "tools": ["fs_read", "execute_bash"],
+  "allowedTools": ["fs_read"],
+  "resources": ["file://.kiro/steering/**/*.md", "file://README.md"]
+}
