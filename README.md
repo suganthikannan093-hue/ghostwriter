@@ -1,5 +1,7 @@
 # 👻 GhostWriter — resurrect dead ideas into Kiro specs
 
+**Live:** https://ghostwriter-suganthikannan093.vercel.app · **Demo video (85 s):** [docs/demo.mp4](docs/demo.mp4)
+
 Paste an abandoned idea, half-written notes, or a snippet of dead technology (a 1999 CGI guestbook, Winamp playlists, Flash…). GhostWriter brings it back as a **Kiro-ready project**:
 
 - `requirements.md` with user stories and **EARS** acceptance criteria (`WHEN … THEN … SHALL`)
@@ -31,7 +33,7 @@ No key? GhostWriter runs in **DEMO MODE** (badge in the header): a deterministic
 | `npm run lint` / `npm run typecheck` | ESLint / `tsc --noEmit` |
 | `npm run build && npm start` | production on port 3300 |
 
-Env: `OPENAI_API_KEY` (optional), `OPENAI_MODEL` (default `gpt-4o-mini`), `GHOSTWRITER_MODE=demo` (force demo).
+Env: `OPENAI_API_KEY` (optional), `OPENAI_MODEL` (default `gpt-4o-mini`), `GHOSTWRITER_MODE=demo` (force demo). Live AI calls are rate-limited per visitor (`lib/ratelimit.ts`: 8 per 10 min, 4 concurrent; tune with `GHOSTWRITER_RATE_LIMIT`, `GHOSTWRITER_RATE_WINDOW_MS`, `GHOSTWRITER_MAX_CONCURRENT`); demo mode is not limited.
 
 ## Architecture
 
