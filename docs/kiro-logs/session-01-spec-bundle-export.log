@@ -1,0 +1,112 @@
+I'll start by reading the steering files, existing specs, and exploring the codebase to understand the actual code before doing anything else.
+[tool] status: Failed
+[tool] Reading product.md:1, tech.md:1, structure.md:1, requirements.md:1, design.md:1, tasks.md:1
+[tool] status: Completed
+Let me explore the codebase structure and read the key lib files.
+[tool] Reading listing ghostwriter
+[tool] Finding **/*.{ts,tsx,json} in ghostwriter
+[tool] status: Completed
+[tool] status: Completed
+Now let me read all the core lib files, the UI component, the API route, tests, and existing hooks.
+[tool] Reading schema.ts:1, markdown.ts:1, safe.ts:1, demo.ts:1, llm.ts:1, prompt.ts:1
+[tool] Reading GhostWriter.tsx:1, route.ts:1, core.test.ts:1
+[tool] Reading test-on-save.json:1, schema-guard.json:1, lint-on-save.json:1, update-readme.json:1, ghostwriter-reviewer.json:1
+[tool] Reading package.json:1, tsconfig.json:1, vitest.config.ts:1, eslint.config.mjs:1, .env.example:1
+[tool] status: Completed
+[tool] status: Completed
+[tool] status: Completed
+[tool] status: Completed
+Now let me read the CSS to understand styling patterns for the new UI elements.
+[tool] Reading globals.css:1
+[tool] status: Completed
+I've read all the steering files, the existing spec, every lib file, the UI component, API route, tests, hooks, and config. Let me create a task list and get to work.
+[tool] Creating task list: Spec-driven feature: (a) lib/bundle.ts pure function comb...
+[tool] status: Completed
+I have a thorough understanding of the codebase now. Let me start implementing. I'll begin with the spec files and then move to code.
+
+First, let me create the spec directory with all three spec documents, then the code changes in parallel.
+[tool] Creating requirements.md
+[tool] Creating design.md
+[tool] Creating tasks.md
+[tool] status: Completed
+[tool] status: Completed
+[tool] status: Completed
+[tool] status: Failed
+[tool] Completing #1
+[tool] status: Completed
+Now let me implement tasks 2, 3, and 4 in parallel: update structure.md, add MIN_INPUT to schema.ts, and create lib/bundle.ts.
+[tool] Editing structure.md
+[tool] Editing schema.ts
+[tool] Creating bundle.ts
+[tool] status: Completed
+[tool] status: Completed
+[tool] status: Completed
+[tool] Completing #2, #3, #4
+[tool] status: Completed
+Now let me update GhostWriter.tsx (task 5) and globals.css (task 6) in parallel.
+
+For the UI, I need to:
+1. Import `MIN_INPUT`, `MAX_INPUT` from schema and `bundleMd` from bundle
+2. Add a live char counter below the textarea
+3. Add validation messages for too-short/too-long
+4. Add a "Download bundle (.md)" button next to the zip download
+[tool] Editing GhostWriter.tsx
+[tool] Creating _bundle_tmp.css
+[tool] status: Completed
+[tool] status: Completed
+I need to integrate the CSS into globals.css instead. Let me remove that temp file and append to globals.css, and add the textarea counter and validation messages to GhostWriter.tsx.
+[tool] Running: rm /workspace/ghostwriter/app/_bundle_tmp.css
+[tool] status: Completed
+[tool] Editing globals.css
+[tool] status: Completed
+Now add the char counter + validation messages below the textarea. The current code has:
+[tool] Editing GhostWriter.tsx
+[tool] status: Completed
+Now add the "Download bundle (.md)" button next to the existing download button in the tomb section.
+[tool] Editing GhostWriter.tsx
+[tool] status: Completed
+Now add the `downloadBundle` function. I'll place it after the existing `download` function.
+[tool] Editing GhostWriter.tsx
+[tool] status: Completed
+Now also update the Resurrect button to use MIN_INPUT and MAX_INPUT instead of hardcoded values.
+[tool] Editing GhostWriter.tsx
+[tool] status: Completed
+[tool] Completing #5, #6
+[tool] status: Completed
+Now let me write the tests (task 7) and the spec-sync hook (task 8) in parallel.
+[tool] Creating bundle.test.ts
+[tool] Creating spec-sync.json
+[tool] status: Completed
+[tool] status: Completed
+[tool] Completing #7, #8
+[tool] status: Completed
+Now for task 9: run all three checks and fix any failures.
+[tool] Running: cd /workspace/ghostwriter && npm test 2>&1; echo "=== TYPECHECK ==="; npm run typecheck 2>&1; echo "=== LINT ==="; npm run lint 2>&1
+[tool] status: Completed
+All three checks pass cleanly:
+- **Tests**: 2 test files, 14 tests passed (7 existing + 7 new bundle tests)
+- **Typecheck**: no errors
+- **Lint**: no errors
+
+Now let me mark tasks done in tasks.md (task 10).
+[tool] Editing tasks.md
+[tool] status: Completed
+[tool] Completing #9, #10
+[tool] status: Completed
+All tasks complete. Here's a summary of files changed:
+
+**New files (5):**
+- `.kiro/specs/spec-bundle-export/requirements.md` — 3 requirements in EARS form (bundle download, char counter, validation feedback)
+- `.kiro/specs/spec-bundle-export/design.md` — overview, mermaid architecture, components, testing strategy
+- `.kiro/specs/spec-bundle-export/tasks.md` — 10 tasks, all marked `[x]`, linked to requirement ids
+- `lib/bundle.ts` — `bundleMd(spec)` pure function: combines requirements/design/tasks via existing renderers, demotes headings by one level for a single H1, adds a table of contents, appends steering text
+- `tests/bundle.test.ts` — 7 tests: single H1, TOC present, all sections present, heading demotion, no leftover H1s, purity, epitaph
+- `.kiro/hooks/spec-sync.json` — v1 `PostFileSave` agent hook matching `^lib/.*\.ts$` that reminds to update tasks.md
+
+**Modified files (4):**
+- `lib/schema.ts` — added `MIN_INPUT = 20` export, used it in `InputSchema.min()`
+- `app/components/GhostWriter.tsx` — imports `MIN_INPUT`/`MAX_INPUT`/`bundleMd`; added live char counter below textarea, validation messages (too short/too long/ready), "Download bundle (.md)" button with `downloadBundle()`, updated Resurrect button to respect `MAX_INPUT` upper bound too
+- `app/globals.css` — `.counter` and `.hint` styles (warn/ok variants)
+- `.kiro/steering/structure.md` — added mention of `lib/bundle.ts`
+
+**Verification:** `npm test` (14 tests, 2 files, 0 failures), `npm run typecheck` (0 errors), `npm run lint` (0 errors). No `.env` touched, no commit made.

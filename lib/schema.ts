@@ -1,8 +1,9 @@
 import { z } from "zod";
 
+export const MIN_INPUT = 20;
 export const MAX_INPUT = 8000;
 export const InputSchema = z.object({
-  text: z.string().trim().min(20, "Paste at least 20 characters of your old idea or code.").max(MAX_INPUT),
+  text: z.string().trim().min(MIN_INPUT, "Paste at least 20 characters of your old idea or code.").max(MAX_INPUT),
   mode: z.enum(["idea", "legacy"]).default("idea"),
   stack: z.enum(["nextjs", "node-cli", "python-fastapi"]).default("nextjs"),
 });

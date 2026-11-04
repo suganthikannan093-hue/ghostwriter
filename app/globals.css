@@ -35,3 +35,9 @@ pre.doc { white-space:pre-wrap; background:#0e0c14; border:1px solid var(--line)
 .empty { text-align:center; padding:70px 20px; color:var(--muted); } .empty .big { font-size:54px; }
 .spin { display:inline-block; animation: float 1.2s ease-in-out infinite; }
 footer { margin-top:26px; color:var(--muted); font-size:12px; text-align:center; }
+/* counter + validation styles */
+.counter { display:flex; justify-content:space-between; font-size:12px; color:var(--muted); margin-top:4px; }
+.counter.warn { color:var(--danger); }
+.hint { font-size:12px; margin-top:4px; }
+.hint.warn { color:var(--danger); }
+.hint.ok { color:var(--ecto); }
